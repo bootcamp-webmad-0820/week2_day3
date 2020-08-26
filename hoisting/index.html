@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        // Function statement: hoisted! (aunque con window pollution)
+
+        sayHi()
+
+        function sayHi() {
+            alert('hi!')
+        }
+
+        console.log('La función es, en realidad, un método del objeto window:', window)
+
+
+
+
+        // vars: hoisted! (aunque con window pollution)
+
+        console.log('El valor es', myName)
+
+        var myName = 'Ger'
+
+        console.log('La variable es, en realidad, una propiedad del objeto window:', window)
+
+
+
+    </script>
+
+</body>
+
+</html>

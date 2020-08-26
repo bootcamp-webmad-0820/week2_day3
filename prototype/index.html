@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        const drinks = new Array('coca-cola', 'fanta', 'chocobaylies')
+        const foods = ['spaguetti', 'chips']
+
+        // Extendemos un objeto particular
+        drinks.showLastItem = function () {
+            console.log(this[this.length - 1])
+        }
+
+        // Extendemos el prototipo de todos los objetos de tipo array
+        Array.prototype.showFirstItem = function () {
+            console.log(this[0])
+        }
+
+        // Comprueba su prototype!
+        console.log(drinks)
+
+        drinks.showLastItem()
+        drinks.showFirstItem()
+
+        foods.showFirstItem()
+
+
+        Array.prototype.push = function () {
+            this.pop()
+        }
+
+        drinks.push('Nunca llegaré a entrar D:')
+        console.log('En vez de incluir el elemento, ha eliminado el último!:', drinks)
+
+
+    </script>
+</body>
+
+</html>

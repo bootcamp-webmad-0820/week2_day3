@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+
+        // Global context: this === window
+        console.log('Global context:', this)
+        console.log(window === this)
+
+
+
+
+        // Function statement context: this === window
+        function whatever() {
+            console.log('Function context:', this)
+        }
+
+        window.whatever()
+
+
+
+
+        // Method context: el objeto al que pertenece
+        const person = {
+            weight: 80,
+            walk() {
+                console.log(this)           // object person
+                console.log(this.weight)    // 80
+            }
+        }
+
+        person.walk()
+
+
+
+
+
+
+
+        // Gestión de contexto en métodos con funciones anidadas
+        const walker = {
+            name: 'John',
+            weight: 80,
+            walk1() {
+                setInterval(function () {
+                    this.weight -= .1
+                    console.log('El caminante ahora pesa', this.weight)
+                }, 1000)
+            },
+            walk2() {
+                const that = this       // no!
+                setInterval(function () {
+                    that.weight -= .1
+                    console.log('El caminante ahora pesa', that.weight)
+                }, 1000)
+            },
+            walk3() {
+                setInterval(function () {
+                    this.weight -= .1
+                    console.log('El caminante ahora pesa', this.weight)
+                }.bind(this), 1000)
+            },
+            walk4() {
+                setInterval(() => {
+                    this.weight -= .1
+                    console.log('El caminante ahora pesa', this.weight)
+                }, 1000)
+            }
+        }
+
+
+        // ERROR! El contexto de la función es window
+        // walker.walk1()
+
+        // ERROR! Ineficiente 
+        // walker.walk2()
+
+        // OK! .bind() reorienta el contexto de una función
+        // walker.walk3()
+
+        // OK! Las AF no reorientan el contexto
+        walker.walk4()
+
+
+    </script>
+</body>
+
+</html>

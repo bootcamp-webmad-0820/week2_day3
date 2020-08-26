@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>ME LLAMAS? AW :3</button>
+
+    <script>
+
+        // function declarations: function statement
+
+        function myFn1(a, b) {
+            return a + b
+        }
+
+
+        // function declarations: function expression
+
+        const myFn2 = function (a, b) {
+            return a + b
+        }
+
+
+        // function declaration: global object function
+
+        const myFn3 = new Function('a', 'b', 'return a + b')
+
+
+
+
+
+
+        // Functions are FCO
+
+        const callMe = () => alert('RIN, RIIIN! AW')
+
+        document.querySelector('button').onclick = callMe
+
+
+
+    </script>
+</body>
+
+</html>
